@@ -1,0 +1,67 @@
+{% extends "base_news_bar.html" %}
+{% block post %}
+
+    <div class="col-lg-7 col-12">
+        {% for article in articles %}
+            <div class="news-block">
+                <div class="news-block-top">
+                    <a href="{{ article.get_absolute_url }}">
+                        <img src='{{ article.img.url }}' class="news-image img-fluid" alt="">
+                    </a>
+
+                    <div class="news-category-block">
+                        {% for category in article.categories.all %}
+                        <a href="#" class="category-block-link">{{ category.name }}{% if forloop.last %}{% else %},{% endif %}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="news-block-info">
+                    <div class="d-flex mt-2">
+                        <div class="news-block-date">
+                            <p>
+                                <i class="bi-calendar4 custom-icon me-1"></i>
+                                {{ article.date }}
+                            </p>
+                        </div>
+
+                        <div class="news-block-author mx-5">
+                            <p>
+                                <i class="bi-person custom-icon me-1"></i>
+                                By {{ article.author }}
+                            </p>
+                        </div>
+
+                        <div class="news-block-comment">
+                            <p>
+                                <i class="bi-chat-left custom-icon me-1"></i>
+                                32 Comments
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="news-block-title mb-2">
+                        <h4>
+                            <a href="news-detail.html" class="news-block-title-link">
+                                {{ article.title }}
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="news-block-body">
+                        <p>This is a Bootstrap 5.2.2 CSS template for charity organization websites. You can feel free to use it. Please tell your friends about TemplateMo website. Thank you.</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+<!-- JAVASCRIPT FILES -->
+{% block js %}
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
+{% endblock %}

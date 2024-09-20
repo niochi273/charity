@@ -1,0 +1,102 @@
+{% extends "base_news_bar.html" %}
+
+{% block post %}
+<div class="col-lg-7 col-12">
+    <div class="news-block">
+        <div class="news-block-top">
+            <img src='{{article.img.url}}' class="news-image img-fluid" alt="">
+
+            <div class="news-category-block">
+                    {% for tag in article.tags.all %}
+                <a href="#" class="category-block-link">
+                    {{ tag }}
+                </a>
+                    {% endfor %}
+            </div>
+        </div>
+
+        <div class="news-block-info">
+            <div class="d-flex mt-2">
+            <div class="news-block-date">
+                <p>
+                    <i class="bi-calendar4 custom-icon me-1"></i>
+                    {{ article.date }}
+                </p>
+            </div>
+
+            <div class="news-block-author mx-5">
+                <p>
+                    <i class="bi-person custom-icon me-1"></i>
+                    By {{ article.author.username }}
+                </p>
+            </div>
+
+            <div class="news-block-comment">
+                <p>
+                    <i class="bi-chat-left custom-icon me-1"></i>
+                    35 Comments
+                </p>
+            </div>
+        </div>
+
+        <div class="news-block-title mb-2">
+            <h4>{{ article.title }}</h4>
+        </div>
+
+            <div class="news-block-body">
+                <p>{{ article.content }}</p>
+            </div>
+
+            <div class="row mt-5 mb-4">
+                <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                    <img src="images/news/africa-humanitarian-aid-doctor.jpg" class="news-detail-image img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <img src="images/news/close-up-happy-people-working-together.jpg" class="news-detail-image img-fluid" alt="">
+                </div>
+            </div>
+
+            <div class="social-share border-top mt-5 py-4 d-flex flex-wrap align-items-center">
+                <div class="tags-block me-auto">
+                    {% for tag in article.tags.all %}
+                        <a href="{{ tag.get_absolute_url }}" class="tags-block-link">
+                            {{ tag }}
+                        </a>
+                    {% endfor %}
+                </div>
+
+                <div class="d-flex">
+                    <a href="#" class="social-icon-link bi-facebook"></a>
+
+                    <a href="#" class="social-icon-link bi-twitter"></a>
+
+                    <a href="#" class="social-icon-link bi-printer"></a>
+
+                    <a href="#" class="social-icon-link bi-envelope"></a>
+                </div>
+            </div>
+
+            <form class="custom-form comment-form mt-4" action="#" method="post" role="form">
+                <h6 class="mb-3">Write a comment</h6>
+
+                <textarea name="comment-message" rows="4" class="form-control" id="comment-message" placeholder="Your comment here"></textarea>
+
+                <div class="col-lg-3 col-md-4 col-6 ms-auto">
+                    <button type="submit" class="form-control">Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- JAVASCRIPT FILES -->
+{% block js %}
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/click-scroll.js"></script>
+<script src="js/counter.js"></script>
+<script src="js/custom.js"></script>
+{% endblock %}
